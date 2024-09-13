@@ -1,0 +1,61 @@
+{
+    "inicio":{
+        "id":1,
+        "descripcion":"Inicia el partido",
+        "posibilidades": [["pase_corto_adelante",45],["pase_corto_atras", 50], ["tiro_arco",5]]
+    },
+
+    "portero_despeja_corto":{
+        "id":2,
+        "descripcion":"Portero despeja corto",
+        "posibilidades": [["pase_corto_adelante",35],["pase_corto_atras",35], ["tiro_arco",30]]
+    },
+
+    "portero_despeja_lago":{
+        "id":3,
+        "descripcion":"Portero despeja largo",
+        "posibilidades": [["pase_corto_adelante",35],["pase_corto_atras",35], ["tiro_arco",30]]
+    },
+
+    "pase_corto_atras":{
+        "id":4,
+        "descripcion":"Pase corto atras",
+        "posibilidades": [["pase_corto_adelante",35], ["pase_corto_atras",35], ["tiro_arco",30]]
+    },
+
+    "pase_corto_adelante":{
+        "id":4,
+        "descripcion":"Pase corto adelante",
+        "posibilidades": [["pase_corto_adelante",35], ["pase_corto_atras",35], ["tiro_arco",30]]
+    },
+
+    "tiro_arco":{
+        "id":5,
+        "descripcion":"Lanza tiro al arco",
+        "posibilidades": [["arquero_tapa",70], ["tiro_desviado",20], ["gol",10]]
+    },
+
+    "arquero_tapa":{
+        "id":6,
+        "descripcion":"El arquero tapa el tiro",
+        "posibilidades": [["portero_despeja_corto",40], ["portero_despeja_lago",60]]
+    },
+
+    "tiro_desviado":{
+        "id":7,
+        "descripcion":"el tiro sale desviado",
+        "posibilidades": [["portero_despeja_corto",40], ["portero_despeja_lago",60]]
+    },
+
+    "gol":{
+        "id":8,
+        "descripcion":"Anota Gol!!",
+        "posibilidades": [["saque_mitad_cancha",100]]
+    },
+
+    "saque_mitad_cancha":{
+        "id":9,
+        "descripcion":"Se reanuda el partido a mitad de cancha",
+        "posibilidades": [["pase_corto_adelante",45],["pase_corto_atras", 50], ["tiro_arco",5]]
+    }
+}
