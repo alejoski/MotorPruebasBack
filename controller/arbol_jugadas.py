@@ -10,11 +10,12 @@ import copy
 from random import randint
 
 
+
 class Arbol_jugadas:
-    def __init__(self, json) -> None:
+    def __init__(self, json, equipo) -> None:
         self.json = json
         self._json_ob2 = ""
-
+        self.equipo = equipo
         self.cargar_josn()
 
     """
@@ -29,26 +30,36 @@ class Arbol_jugadas:
         Seleciona la siguiente jugada partir de una jugada inicial
     """
 
-    def siguiente_jugada(self, jugada):
+    def siguiente_jugada(self, jugada)-> list:
         # Realiza copia profunda de la lista de posibilidades para que no se pase por referencia
-        posi = self.jugada_json(jugada)["posibilidades"]
-        jugada_seleccionada = self.seleccion_aleatorea_posibilidad(posi)
-        return jugada_seleccionada
+        posi = self.jugada_json_by_key(jugada)["posibilidades"]
+        #Seleciona aleatoreamente la jugada
+        jugada_seleccionada = self.seleccion_aleatorea_posibilidad(posi)        
+        return self.jugada_json_by_key(jugada_seleccionada)
 
     """
         Retorna el JSON especifico de una jugada
     """
-
-    def jugada_json(self, jugada):
+    def jugada_json_by_key(self, jugada)->list:
         j_json = copy.deepcopy(self._json_ob2[jugada])
         return j_json
+    
+    """
+        Retorna el JSON especifico de una jugada
+    """
+    def jugada_json_by_id(self, id)->list:
+        for jugada in self._json_ob2:
+            if id == self._json_ob2[jugada]['id']:                
+                return copy.deepcopy(self._json_ob2[jugada])
+        
+
 
     """
         Entre las posibilidades de una Jugada inicial
         selecciona aleatoreamente una
     """
 
-    def seleccion_aleatorea_posibilidad(self, posibildades):
+    def seleccion_aleatorea_posibilidad(self, posibildades)->str:
         maxProbabilidad = 0
         minProbabilidad = 1
 
@@ -63,11 +74,13 @@ class Arbol_jugadas:
             minProbabilidad = posibilidad[2] + 1
 
         num_alatoreo = randint(1, maxProbabilidad)
-
-        print(posibildades)
-        print("num_alatoreo", num_alatoreo)
+        #print(posibildades)
+        #print("num_alatoreo", num_alatoreo)
 
         # Recorre la lista de posibilidades para validar cual fue la seleccionada leatoreamente
         for posibilidad in posibildades:
             if num_alatoreo >= posibilidad[1] and num_alatoreo <= posibilidad[2]:
                 return posibilidad[0]
+            
+
+

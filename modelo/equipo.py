@@ -1,7 +1,6 @@
 class Equipo:
-    def __init__(self, nombre, caracteristicas) -> None:
+    def __init__(self, nombre) -> None:
         self.nombre = nombre
-        self.caracteristicas = caracteristicas
 
         self._habilidad_portero = None
         self._fortaleza_defensa = None
@@ -11,6 +10,7 @@ class Equipo:
         self._agresividad = None
         self._ofensividad = None
         self._defensividad = None
+        self._goles= None
 
     
 
