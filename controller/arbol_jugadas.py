@@ -105,6 +105,8 @@ class Arbol_jugadas:
                     valor_potenciado += equipo.ofensividad
                 elif potenciador == 'defensividad':
                     valor_potenciado += equipo.defensividad
+                elif potenciador == 'precision_tiros':
+                    valor_potenciado += equipo.precision_tiros
 
                 print("...................POTENCIA>",potenciador, "Valor (",valor_potenciado,") equipo (",equipo.nombre,")"  )
                 

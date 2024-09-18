@@ -11,18 +11,18 @@ class Equipo:
         self.nombre = nombre
 
         #Caracteristicas
-        self._habilidad_portero = None
-        self._fortaleza_defensa = None
-        self._seguridad_pases = None
-        self._penales = None
-        self._tiros_libres = None
-        self._agresividad = None
-        self._ofensividad = None
-        self._defensividad = None
-        self._delantera = None
+        self.habilidad_portero = None
+        self.fortaleza_defensa = None
+        self.seguridad_pases = None
+        self.penales = None
+        self.tiros_libres = None
+        self.agresividad = None
+        self.ofensividad = None
+        self.defensividad = None
+        self.precision_tiros = None
 
-
-        self._goles= None
+        #Datos del partido
+        self.goles= None
 
     
 

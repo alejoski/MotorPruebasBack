@@ -96,7 +96,7 @@
         "posibilidades": [["saque_mitad_cancha",100]],
         "cambio_equipo": true,
         "jugada_equipo_contrario": false,
-        "caracteristicas_potencian": [""]
+        "caracteristicas_potencian": ["precision_tiros"]
     },
 
     "saque_mitad_cancha":{
