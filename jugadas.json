@@ -1,90 +1,121 @@
 {
     "inicio":{
-        "id":1,
+        "id":0,
         "key":"inicio",
-        "descripcion":"XYZ Inicia el partido",
+        "descripcion":"Inicio Juego",
+        "posibilidades": [["inicio_mitad",100]],
+        "cambio_equipo": false,
+        "jugada_equipo_contrario": false,
+        "caracteristicas_potencian": [""]
+    },
+    "inicio_mitad":{
+        "id":1,
+        "key":"inicio_mitad",
+        "descripcion":"XYZ realiza el saque inicial del partido",
         "posibilidades": [["pase_corto_adelante",45],["pase_corto_atras", 50], ["tiro_arco",5]],
-        "cambio_equipo": false
+        "cambio_equipo": false,
+        "jugada_equipo_contrario": false,
+        "caracteristicas_potencian": [""]
     },
 
     "portero_despeja_corto":{
         "id":2,
         "key":"portero_despeja_corto",
-        "descripcion":"Portero despeja corto",
+        "descripcion":"El Portero de XYZ despeja corto",
         "posibilidades": [["pase_corto_adelante",35],["pase_corto_atras",35], ["tiro_arco",30]],
-        "cambio_equipo": false
+        "cambio_equipo": false,
+        "jugada_equipo_contrario": false,
+        "caracteristicas_potencian": ["defensividad"]
     },
 
     "portero_despeja_lago":{
         "id":3,
-        "key":"portero_despeja_corto",
+        "key":"portero_despeja_lago",
         "descripcion":"Portero despeja largo",
         "posibilidades": [["pase_corto_adelante",35],["pase_corto_atras",35], ["tiro_arco",30]],
-        "cambio_equipo": false
+        "cambio_equipo": false,
+        "jugada_equipo_contrario": false,
+        "caracteristicas_potencian": ["ofensividad"]
     },
 
     "pase_corto_atras":{
         "id":4,
         "key":"pase_corto_atras",
-        "descripcion":"Pase corto atras",
-        "posibilidades": [["pase_corto_adelante",35], ["pase_corto_atras",35], ["tiro_arco",30]],
-        "cambio_equipo": false
+        "descripcion":"Pase corto atrás",
+        "posibilidades": [["pase_corto_adelante",40], ["pase_corto_atras",35], ["tiro_arco",15], ["roba_posesion_pase",10]],
+        "cambio_equipo": false,
+        "jugada_equipo_contrario": false,
+        "caracteristicas_potencian": ["seguridad_pases", "defensividad"]
+        
     },
 
     "pase_corto_adelante":{
-        "id":4,
-        "key":"pase_corto_atras",
+        "id":5,
+        "key":"pase_corto_adelante",
         "descripcion":"Pase corto adelante",
-        "posibilidades": [["pase_corto_adelante",35], ["pase_corto_atras",35], ["tiro_arco",30]],
-        "cambio_equipo": false
+        "posibilidades": [["pase_corto_adelante",35], ["pase_corto_atras",30], ["tiro_arco",20], ["roba_posesion_pase",15]],
+        "cambio_equipo": false,
+        "jugada_equipo_contrario": false,
+        "caracteristicas_potencian": ["seguridad_pases", "ofensividad"]
     },
 
     "tiro_arco":{
-        "id":5,
+        "id":6,
         "key":"tiro_arco",
         "descripcion":"Lanza tiro al arco",
         "posibilidades": [["arquero_tapa",70], ["tiro_desviado",20], ["gol",10]],
-        "cambio_equipo": false
+        "cambio_equipo": false,
+        "jugada_equipo_contrario": false,
+        "caracteristicas_potencian": ["agresividad"]
     },
 
     "arquero_tapa":{
-        "id":6,
+        "id":7,
         "key":"arquero_tapa",
         "descripcion":"El portero de XYZ tapa el disparo",
         "posibilidades": [["portero_despeja_corto",40], ["portero_despeja_lago",60]],
-        "cambio_equipo": true
+        "cambio_equipo": true,
+        "jugada_equipo_contrario": true,
+        "caracteristicas_potencian": ["habilidad_portero"]
     },
 
     "tiro_desviado":{
-        "id":7,
+        "id":8,
         "key":"tiro_desviado",
         "descripcion":"el tiro sale desviado",
         "posibilidades": [["portero_despeja_corto",40], ["portero_despeja_lago",60]],
-        "cambio_equipo": true
+        "cambio_equipo": true,
+        "jugada_equipo_contrario": true,
+        "caracteristicas_potencian": [""]
     },
 
     "gol":{
-        "id":8,
+        "id":9,
         "key":"gol",
         "descripcion":"XYZ Anota Gol!!",
         "posibilidades": [["saque_mitad_cancha",100]],
-        "cambio_equipo": true
+        "cambio_equipo": true,
+        "jugada_equipo_contrario": false,
+        "caracteristicas_potencian": [""]
     },
 
     "saque_mitad_cancha":{
-        "id":9,
+        "id":10,
         "key":"saque_mitad_cancha",
         "descripcion":"XYZ reanuda el partido a mitad de cancha",
         "posibilidades": [["pase_corto_adelante",45],["pase_corto_atras", 50], ["tiro_arco",5]],
-        "cambio_equipo": false
+        "cambio_equipo": false,
+        "jugada_equipo_contrario": false,
+        "caracteristicas_potencian": [""]
     },
 
     "roba_posesion_pase":{
         "id":11,
         "key":"roba_posesion_pase",
-        "descripcion":"XYZ recupera la posecion del balon",
-        "posibilidades": [["pase_corto_adelante",35], ["pase_corto_atras",35], ["tiro_arco",30]],
-        "cambio_equipo": true
+        "descripcion":"XYZ recupera la pocesión del balón",
+        "posibilidades": [["pase_corto_adelante",45], ["pase_corto_atras",35], ["tiro_arco",20]],
+        "cambio_equipo": true,
+        "jugada_equipo_contrario": true,
+        "caracteristicas_potencian": [""]
     }
-
 }
