@@ -6,7 +6,9 @@
         "posibilidades": [["inicio_mitad",100]],
         "cambio_equipo": false,
         "jugada_equipo_contrario": false,
-        "caracteristicas_potencian": [""]
+        "caracteristicas_aumentan": [""],
+        "caracteristicas_disminuyen": [""],
+        "caracteristica_equipo_contrario_disminuye":[""]
     },
     "inicio_mitad":{
         "id":1,
@@ -15,7 +17,9 @@
         "posibilidades": [["pase_corto_adelante",45],["pase_corto_atras", 50], ["tiro_arco",5]],
         "cambio_equipo": false,
         "jugada_equipo_contrario": false,
-        "caracteristicas_potencian": [""]
+        "caracteristicas_aumentan": [""],
+        "caracteristicas_disminuyen": [""],
+        "caracteristica_equipo_contrario_disminuye":[""]
     },
 
     "portero_despeja_corto":{
@@ -25,7 +29,9 @@
         "posibilidades": [["pase_corto_adelante",35],["pase_corto_atras",35], ["tiro_arco",30]],
         "cambio_equipo": false,
         "jugada_equipo_contrario": false,
-        "caracteristicas_potencian": ["defensividad"]
+        "caracteristicas_aumentan": ["defensividad"],
+        "caracteristicas_disminuyen": ["ofensividad"],
+        "caracteristica_equipo_contrario_disminuye":[""]
     },
 
     "portero_despeja_lago":{
@@ -35,17 +41,21 @@
         "posibilidades": [["pase_corto_adelante",35],["pase_corto_atras",35], ["tiro_arco",30]],
         "cambio_equipo": false,
         "jugada_equipo_contrario": false,
-        "caracteristicas_potencian": ["ofensividad"]
+        "caracteristicas_aumentan": ["ofensividad"],
+        "caracteristicas_disminuyen": ["defensividad"],
+        "caracteristica_equipo_contrario_disminuye":[""]
     },
 
     "pase_corto_atras":{
         "id":4,
         "key":"pase_corto_atras",
         "descripcion":"Pase corto atrás",
-        "posibilidades": [["pase_corto_adelante",40], ["pase_corto_atras",35], ["tiro_arco",15], ["roba_posesion_pase",10]],
+        "posibilidades": [["pase_corto_adelante",40], ["pase_corto_atras",35], ["tiro_arco",15], ["pierde_posesion_pase",10]],
         "cambio_equipo": false,
         "jugada_equipo_contrario": false,
-        "caracteristicas_potencian": ["seguridad_pases", "defensividad"]
+        "caracteristicas_aumentan": ["seguridad_pases", "defensividad"],
+        "caracteristicas_disminuyen": [""],
+        "caracteristica_equipo_contrario_disminuye":[""]
         
     },
 
@@ -53,20 +63,24 @@
         "id":5,
         "key":"pase_corto_adelante",
         "descripcion":"Pase corto adelante",
-        "posibilidades": [["pase_corto_adelante",35], ["pase_corto_atras",30], ["tiro_arco",20], ["roba_posesion_pase",15]],
+        "posibilidades": [["pase_corto_adelante",35], ["pase_corto_atras",30], ["tiro_arco",20], ["pierde_posesion_pase",15]],
         "cambio_equipo": false,
         "jugada_equipo_contrario": false,
-        "caracteristicas_potencian": ["seguridad_pases", "ofensividad"]
+        "caracteristicas_aumentan": ["seguridad_pases", "ofensividad"],
+        "caracteristicas_disminuyen": [""],
+        "caracteristica_equipo_contrario_disminuye":[""]
     },
 
     "tiro_arco":{
         "id":6,
         "key":"tiro_arco",
         "descripcion":"Lanza tiro al arco",
-        "posibilidades": [["arquero_tapa",70], ["tiro_desviado",20], ["gol",10]],
+        "posibilidades": [["arquero_tapa",65], ["tiro_desviado",30], ["gol",10]],
         "cambio_equipo": false,
         "jugada_equipo_contrario": false,
-        "caracteristicas_potencian": ["agresividad"]
+        "caracteristicas_aumentan": ["agresividad"],
+        "caracteristicas_disminuyen": [""],
+        "caracteristica_equipo_contrario_disminuye":[""]
     },
 
     "arquero_tapa":{
@@ -76,7 +90,9 @@
         "posibilidades": [["portero_despeja_corto",40], ["portero_despeja_lago",60]],
         "cambio_equipo": true,
         "jugada_equipo_contrario": true,
-        "caracteristicas_potencian": ["habilidad_portero"]
+        "caracteristicas_aumentan": ["habilidad_portero"],
+        "caracteristicas_disminuyen": [""],
+        "caracteristica_equipo_contrario_disminuye":["precision_tiros"]
     },
 
     "tiro_desviado":{
@@ -86,7 +102,9 @@
         "posibilidades": [["portero_despeja_corto",40], ["portero_despeja_lago",60]],
         "cambio_equipo": true,
         "jugada_equipo_contrario": true,
-        "caracteristicas_potencian": [""]
+        "caracteristicas_aumentan": [""],
+        "caracteristicas_disminuyen": ["precision_tiros"],
+        "caracteristica_equipo_contrario_disminuye":[""]
     },
 
     "gol":{
@@ -96,7 +114,9 @@
         "posibilidades": [["saque_mitad_cancha",100]],
         "cambio_equipo": true,
         "jugada_equipo_contrario": false,
-        "caracteristicas_potencian": ["precision_tiros"]
+        "caracteristicas_aumentan": ["precision_tiros"],
+        "caracteristicas_disminuyen": [""],
+        "caracteristica_equipo_contrario_disminuye":["habilidad_portero"]
     },
 
     "saque_mitad_cancha":{
@@ -106,16 +126,20 @@
         "posibilidades": [["pase_corto_adelante",45],["pase_corto_atras", 50], ["tiro_arco",5]],
         "cambio_equipo": false,
         "jugada_equipo_contrario": false,
-        "caracteristicas_potencian": [""]
+        "caracteristicas_aumentan": [""],
+        "caracteristicas_disminuyen": [""],
+        "caracteristica_equipo_contrario_disminuye":[""]
     },
 
-    "roba_posesion_pase":{
+    "pierde_posesion_pase":{
         "id":11,
-        "key":"roba_posesion_pase",
+        "key":"pierde_posesion_pase",
         "descripcion":"XYZ recupera la pocesión del balón",
         "posibilidades": [["pase_corto_adelante",45], ["pase_corto_atras",35], ["tiro_arco",20]],
         "cambio_equipo": true,
         "jugada_equipo_contrario": true,
-        "caracteristicas_potencian": [""]
+        "caracteristicas_aumentan": [""],
+        "caracteristicas_disminuyen": ["seguridad_pases"],
+        "caracteristica_equipo_contrario_disminuye":[""]
     }
 }

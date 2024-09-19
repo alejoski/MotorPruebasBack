@@ -61,16 +61,20 @@ class Arbol_jugadas:
 
     """
         Entre las posibilidades de una Jugada inicial
-        selecciona aleatoreamente una
+        selecciona aleatoreamente una teniendo en cuenta las 
+        caracteristicas de cada equipo
     """
     def seleccion_aleatorea_posibilidad(self, posibildades, nombre_equipo) -> str:
         maxProbabilidad = 0
         minProbabilidad = 1
 
+        #Identifica el equipo que esta jugando
         if (nombre_equipo ==  self.equipo_a.nombre):
-            equipo = self.equipo_a
+            equipo_juega = self.equipo_a
+            equipo_no_juega = self.equipo_b
         elif (nombre_equipo ==  self.equipo_b.nombre):
-            equipo = self.equipo_b
+            equipo_juega = self.equipo_b
+            equipo_no_juega = self.equipo_a
             
 
         # Arma la nueva lista de posibilidades, de esto:
@@ -79,40 +83,39 @@ class Arbol_jugadas:
         # [['pase_corto_adelante', 1, 45], ['pase_corto_atras', 46, 95], ['tiro_arco', 96, 100]]
         for posibilidad in posibildades:
 
-            #Validacion del incremento por caracteristicas que aumentan la probabilidad
+            #Validacion del incremento o reduccion por caracteristicas que varian la probabilidad
             nombre_jugada = posibilidad[0]
-            print("......................................JUGADA BUSCADA >",nombre_jugada)
+            print("......................................JUGADA BUSCADA >>>>>>>>>> ",nombre_jugada, "(",posibilidad[1],")")
             jugada_json = self.jugada_json_by_key(nombre_jugada)
-            potenciadores = jugada_json['caracteristicas_potencian']
+            caracteristicas_potencian = jugada_json['caracteristicas_aumentan']
+            caracteristicas_reducen = jugada_json['caracteristicas_disminuyen']
+            caracteristicas_equipo_contrario_disminuye = jugada_json['caracteristica_equipo_contrario_disminuye']
 
             #Se suma el valor del potenciador 
             valor_potenciado = 0
-            for potenciador in potenciadores:
-
-                if potenciador == 'habilidad_portero':
-                    valor_potenciado += equipo.habilidad_portero
-                elif potenciador == 'fortaleza_defensa':
-                    valor_potenciado += equipo.fortaleza_defensa
-                elif potenciador == 'seguridad_pases':
-                    valor_potenciado += equipo.seguridad_pases
-                elif potenciador == 'penales':
-                    valor_potenciado += equipo.penales
-                elif potenciador == 'tiros_libres':
-                    valor_potenciado += equipo.tiros_libres
-                elif potenciador == 'agresividad':
-                    valor_potenciado += equipo.agresividad
-                elif potenciador == 'ofensividad':
-                    valor_potenciado += equipo.ofensividad
-                elif potenciador == 'defensividad':
-                    valor_potenciado += equipo.defensividad
-                elif potenciador == 'precision_tiros':
-                    valor_potenciado += equipo.precision_tiros
-
-                print("...................POTENCIA>",potenciador, "Valor (",valor_potenciado,") equipo (",equipo.nombre,")"  )
+            for caracteristica_potencia in caracteristicas_potencian:
+                #Obtoene el valor de la caracteristica para el equipo especifico
+                valor_potenciado += equipo_juega.retorna_valor_caracteristica(caracteristica_potencia)
                 
-               
+                print("...................POTENCIA>",caracteristica_potencia, "Valor (",valor_potenciado,") equipo (",equipo_juega.nombre,")"  )
 
-            maxProbabilidad += posibilidad[1] + valor_potenciado
+            #Se resta el valor del reductor 
+            valor_reducido = 0
+            for caracteristica_reduce in caracteristicas_reducen:
+                #Obtoene el valor de la caracteristica para el equipo especifico
+                valor_reducido += equipo_juega.retorna_valor_caracteristica(caracteristica_reduce)
+
+                print("...................REDUCE>",caracteristica_reduce, "Valor (",valor_reducido,") equipo (",equipo_juega.nombre,")"  )
+            #Resa el valor de reduccion de posibilidad por una habilidad del equipo contrario   
+            valor_reducido_contrario = 0
+            for caracteristica_equipo_contrario in caracteristicas_equipo_contrario_disminuye:
+                valor_reducido_contrario += equipo_no_juega.retorna_valor_caracteristica(caracteristica_equipo_contrario)
+
+            print(f"TOTAL -> Valor potenciado {valor_potenciado} Valor {valor_reducido} Valor reduce contrairo {valor_reducido_contrario}")
+
+            maxProbabilidad += posibilidad[1] + valor_potenciado 
+            maxProbabilidad += -(valor_reducido if valor_reducido < posibilidad[1] else (posibilidad[1]-5) )
+            maxProbabilidad += -(valor_reducido_contrario if valor_reducido_contrario < (posibilidad[1] + valor_potenciado ) else ((posibilidad[1] + valor_potenciado )-3) )
             posibilidad[1] = minProbabilidad
             posibilidad.append(maxProbabilidad)
             minProbabilidad = posibilidad[2] + 1
