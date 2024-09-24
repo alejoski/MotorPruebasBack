@@ -8,6 +8,7 @@
         "jugada_equipo_contrario": false,
         "caracteristicas_aumentan": [""],
         "caracteristicas_disminuyen": [""],
+        "caracteristicas_equipo_contrario_aumentan":[""],
         "caracteristica_equipo_contrario_disminuye":[""]
     },
     "inicio_mitad":{
@@ -19,6 +20,7 @@
         "jugada_equipo_contrario": false,
         "caracteristicas_aumentan": [""],
         "caracteristicas_disminuyen": [""],
+        "caracteristicas_equipo_contrario_aumentan":[""],
         "caracteristica_equipo_contrario_disminuye":[""]
     },
 
@@ -31,6 +33,7 @@
         "jugada_equipo_contrario": false,
         "caracteristicas_aumentan": ["defensividad"],
         "caracteristicas_disminuyen": ["ofensividad"],
+        "caracteristicas_equipo_contrario_aumentan":[""],
         "caracteristica_equipo_contrario_disminuye":[""]
     },
 
@@ -43,6 +46,7 @@
         "jugada_equipo_contrario": false,
         "caracteristicas_aumentan": ["ofensividad"],
         "caracteristicas_disminuyen": ["defensividad"],
+        "caracteristicas_equipo_contrario_aumentan":[""],
         "caracteristica_equipo_contrario_disminuye":[""]
     },
 
@@ -55,6 +59,7 @@
         "jugada_equipo_contrario": false,
         "caracteristicas_aumentan": ["seguridad_pases", "defensividad"],
         "caracteristicas_disminuyen": [""],
+        "caracteristicas_equipo_contrario_aumentan":[""],
         "caracteristica_equipo_contrario_disminuye":[""]
         
     },
@@ -68,6 +73,7 @@
         "jugada_equipo_contrario": false,
         "caracteristicas_aumentan": ["seguridad_pases", "ofensividad"],
         "caracteristicas_disminuyen": [""],
+        "caracteristicas_equipo_contrario_aumentan":[""],
         "caracteristica_equipo_contrario_disminuye":[""]
     },
 
@@ -80,6 +86,7 @@
         "jugada_equipo_contrario": false,
         "caracteristicas_aumentan": ["agresividad"],
         "caracteristicas_disminuyen": [""],
+        "caracteristicas_equipo_contrario_aumentan":[""],
         "caracteristica_equipo_contrario_disminuye":[""]
     },
 
@@ -92,6 +99,7 @@
         "jugada_equipo_contrario": true,
         "caracteristicas_aumentan": ["habilidad_portero"],
         "caracteristicas_disminuyen": [""],
+        "caracteristicas_equipo_contrario_aumentan":[""],
         "caracteristica_equipo_contrario_disminuye":["precision_tiros"]
     },
 
@@ -104,6 +112,7 @@
         "jugada_equipo_contrario": true,
         "caracteristicas_aumentan": [""],
         "caracteristicas_disminuyen": ["precision_tiros"],
+        "caracteristicas_equipo_contrario_aumentan":[""],
         "caracteristica_equipo_contrario_disminuye":[""]
     },
 
@@ -116,6 +125,7 @@
         "jugada_equipo_contrario": false,
         "caracteristicas_aumentan": ["precision_tiros"],
         "caracteristicas_disminuyen": [""],
+        "caracteristicas_equipo_contrario_aumentan":[""],
         "caracteristica_equipo_contrario_disminuye":["habilidad_portero"]
     },
 
@@ -128,6 +138,7 @@
         "jugada_equipo_contrario": false,
         "caracteristicas_aumentan": [""],
         "caracteristicas_disminuyen": [""],
+        "caracteristicas_equipo_contrario_aumentan":[""],
         "caracteristica_equipo_contrario_disminuye":[""]
     },
 
@@ -140,6 +151,7 @@
         "jugada_equipo_contrario": true,
         "caracteristicas_aumentan": [""],
         "caracteristicas_disminuyen": ["seguridad_pases"],
+        "caracteristicas_equipo_contrario_aumentan":["agresividad"],
         "caracteristica_equipo_contrario_disminuye":[""]
     }
 }

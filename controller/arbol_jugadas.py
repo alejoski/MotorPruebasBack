@@ -1,17 +1,11 @@
 '''
- █████╗ ██████╗ ██████╗  ██████╗ ██╗                      
-██╔══██╗██╔══██╗██╔══██╗██╔═══██╗██║                      
-███████║██████╔╝██████╔╝██║   ██║██║                      
-██╔══██║██╔══██╗██╔══██╗██║   ██║██║                      
-██║  ██║██║  ██║██████╔╝╚██████╔╝███████╗                 
-╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝  ╚═════╝ ╚══════╝                 
-                                                          
-     ██╗██╗   ██╗ ██████╗  █████╗ ██████╗  █████╗ ███████╗
-     ██║██║   ██║██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██╔════╝
-     ██║██║   ██║██║  ███╗███████║██║  ██║███████║███████╗
-██   ██║██║   ██║██║   ██║██╔══██║██║  ██║██╔══██║╚════██║
-╚█████╔╝╚██████╔╝╚██████╔╝██║  ██║██████╔╝██║  ██║███████║
- ╚════╝  ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚══════╝
+ █████╗ ██████╗ ██████╗  ██████╗ ██╗              ██╗██╗   ██╗ ██████╗  █████╗ ██████╗  █████╗ ███████╗
+██╔══██╗██╔══██╗██╔══██╗██╔═══██╗██║              ██║██║   ██║██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██╔════╝
+███████║██████╔╝██████╔╝██║   ██║██║              ██║██║   ██║██║  ███╗███████║██║  ██║███████║███████╗
+██╔══██║██╔══██╗██╔══██╗██║   ██║██║         ██   ██║██║   ██║██║   ██║██╔══██║██║  ██║██╔══██║╚════██║
+██║  ██║██║  ██║██████╔╝╚██████╔╝███████╗    ╚█████╔╝╚██████╔╝╚██████╔╝██║  ██║██████╔╝██║  ██║███████║
+╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝  ╚═════╝ ╚══════╝     ╚════╝  ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚══════╝
+
 '''
 import json
 import copy
@@ -85,35 +79,54 @@ class Arbol_jugadas:
 
             #Validacion del incremento o reduccion por caracteristicas que varian la probabilidad
             nombre_jugada = posibilidad[0]
-            print("......................................JUGADA BUSCADA >>>>>>>>>> ",nombre_jugada, "(",posibilidad[1],")")
+            #print("......................................JUGADA BUSCADA >>>>>>>>>> ",nombre_jugada, "(",posibilidad[1],")")
             jugada_json = self.jugada_json_by_key(nombre_jugada)
             caracteristicas_potencian = jugada_json['caracteristicas_aumentan']
             caracteristicas_reducen = jugada_json['caracteristicas_disminuyen']
+            caracteristicas_equipo_contrario_aumentan = jugada_json['caracteristicas_equipo_contrario_aumentan']
             caracteristicas_equipo_contrario_disminuye = jugada_json['caracteristica_equipo_contrario_disminuye']
 
-            #Se suma el valor del potenciador 
+            #########################################################
+            # Se calcula el valor del POTENCIADOR del propio equipo # 
+            #########################################################
             valor_potenciado = 0
             for caracteristica_potencia in caracteristicas_potencian:
                 #Obtoene el valor de la caracteristica para el equipo especifico
                 valor_potenciado += equipo_juega.retorna_valor_caracteristica(caracteristica_potencia)
                 
-                print("...................POTENCIA>",caracteristica_potencia, "Valor (",valor_potenciado,") equipo (",equipo_juega.nombre,")"  )
+                #print("...................POTENCIA>",caracteristica_potencia, "Valor (",valor_potenciado,") equipo (",equipo_juega.nombre,")"  )
 
-            #Se resta el valor del reductor 
+            ######################################################
+            # Se calcula el valor del REDUCTOR del propio equipo #
+            ######################################################
             valor_reducido = 0
             for caracteristica_reduce in caracteristicas_reducen:
                 #Obtoene el valor de la caracteristica para el equipo especifico
                 valor_reducido += equipo_juega.retorna_valor_caracteristica(caracteristica_reduce)
 
-                print("...................REDUCE>",caracteristica_reduce, "Valor (",valor_reducido,") equipo (",equipo_juega.nombre,")"  )
-            #Resa el valor de reduccion de posibilidad por una habilidad del equipo contrario   
+            #####################################################################################
+            # Calcula el valor de AUMENTO de posibiliadd por una habilidad del equipo contrario #
+            #####################################################################################
+            valor_aumenta_contrario =0
+            for caracteristica_equipo_contrario_aumenta in caracteristicas_equipo_contrario_aumentan:
+                valor_aumenta_contrario += equipo_no_juega.retorna_valor_caracteristica(caracteristica_equipo_contrario_aumenta)
+
+                #print("...................REDUCE>",caracteristica_reduce, "Valor (",valor_reducido,") equipo (",equipo_juega.nombre,")"  )
+           
+           
+            ########################################################################################
+            # calcula el valor de REDUCCION de posibilidad dada una habilidad del equipo contrario #   
+            ########################################################################################
             valor_reducido_contrario = 0
-            for caracteristica_equipo_contrario in caracteristicas_equipo_contrario_disminuye:
-                valor_reducido_contrario += equipo_no_juega.retorna_valor_caracteristica(caracteristica_equipo_contrario)
+            for caracteristica_equipo_contrario_disminuye in caracteristicas_equipo_contrario_disminuye:
+                valor_reducido_contrario += equipo_no_juega.retorna_valor_caracteristica(caracteristica_equipo_contrario_disminuye)
 
-            print(f"TOTAL -> Valor potenciado {valor_potenciado} Valor {valor_reducido} Valor reduce contrairo {valor_reducido_contrario}")
+            #print(f"TOTAL -> Valor POTENCIADO  Aumenta<{valor_potenciado}> Disminuye  <{valor_reducido}>     CONTRARIO Aumenta -> <{valor_aumenta_contrario}> reduce <{valor_reducido_contrario}>")
 
-            maxProbabilidad += posibilidad[1] + valor_potenciado 
+            ########################################################################################
+            # Sealiza los calculos (+,-) de las probabiidades dados los refuctores y potenciadores #
+            ########################################################################################
+            maxProbabilidad += posibilidad[1] + valor_potenciado + valor_aumenta_contrario
             maxProbabilidad += -(valor_reducido if valor_reducido < posibilidad[1] else (posibilidad[1]-5) )
             maxProbabilidad += -(valor_reducido_contrario if valor_reducido_contrario < (posibilidad[1] + valor_potenciado ) else ((posibilidad[1] + valor_potenciado )-3) )
             posibilidad[1] = minProbabilidad
@@ -121,8 +134,8 @@ class Arbol_jugadas:
             minProbabilidad = posibilidad[2] + 1
 
         num_alatoreo = randint(1, maxProbabilidad)
-        print(posibildades)
-        print("num_alatoreo", num_alatoreo)
+        #print(posibildades)
+        #print("num_alatoreo", num_alatoreo)
 
         # Recorre la lista de posibilidades para validar cual fue la seleccionada leatoreamente
         for posibilidad in posibildades:
